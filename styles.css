@@ -17,6 +17,10 @@ body {
     font-family: 'Anton', sans-serif;
     font-family: 'Oxygen', sans-serif;
     font-family: 'Uchen', serif;
+    display: flex;
+    justify-content: center;
+    background-color: #252525;
+    margin-top: 0;
 }
 
 /* typography */

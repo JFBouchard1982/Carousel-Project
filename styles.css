@@ -111,7 +111,7 @@ h1 h3 {
     position:absolute;
     top: 20%;
     left: 0%;
-    transform: translateY(100%);
+    transform: translateY(-45%);
 }
 
 .carousel .carousel-actions button {

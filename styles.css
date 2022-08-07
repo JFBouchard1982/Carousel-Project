@@ -1,0 +1,194 @@
+/*
+    Smooth transitions
+    - When a new slide appears that has the class name 'carousel-item-visible' we want to trigger an animation...
+    
+    1) Create a new '@keyframes' at the bottom of this file called 'fadeVisibility' - kind of like a JS function! '@keyframes fadeVisibility {}'
+    2) Keyframes work in steps, so 0-100 on a range. Each step you supply changes the animation sequence, e.g. 0% could be hidden and have an opacity of 0, and 100% could be showing the item by having an opacity of 1
+    3) Our first keyframe step would be '0%' which sets the opacity to 0, remember that '0%' on our sequence step is not like a regular property/values, you have to use curly braces and then set your values inside there!
+    4) Our second keyframe step within 'fadeVisibility' would be '100%', which sets the opacity to 1
+    5) Add this keyframe animation to 'carousel-item-visible' by using the property 'animation' and pass our keyframes, those keyframes being 'fadeVisibility'
+    7) Lastly after we have added our property and value to 'carousel-item-visible', we need to pass a time value (i'm going to be using seconds), so after 'animation: fadeVisibility' pass a time value. I'm going to use 0.5s - which should look like this: 'animation: fadeVisibility 0.5s'
+    
+    Info: So from 0% - 100% in our keyframes we wait 0.5 seconds and go from an opacity of 0, to an opacity of 1!
+    
+    More info: https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
+*/
+body {
+    font-family: 'Anton', sans-serif;
+    font-family: 'Oxygen', sans-serif;
+    font-family: 'Uchen', serif;
+}
+
+/* typography */
+h1 h3 {
+    margin: 0;
+    padding: 0;
+}
+.joker-h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: whitesmoke;
+    transform: translateY(-780%);
+    margin-left: 20px;
+    text-shadow: 0px 0px 2px black;
+}   
+.joker-h3 {
+    font-family: 'Uchen', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: whitesmoke;
+    transform: translateY(-690%);
+    margin-left: 20px;
+    text-shadow: 0px 0px 2px black;
+}
+.baby-driver-h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: whitesmoke;
+    transform: translateY(-150%);
+    padding-top: 0;
+    margin-top: 0;
+    margin-left: 425px;
+    text-shadow: 0px 0px 2px black;
+}
+.parasite-h1 {
+    font-family: 'Uchen', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: aquamarine;
+    opacity: 0.7;
+    transform: translateY(-850%);
+    margin-left: 20px;
+}
+.parasite-h3 {
+    font-size: 12px;
+    font-weight: 400;
+    color: whitesmoke;
+    opacity: 0.9;
+    transform: translateY(-775%);
+    margin-left: 20px;
+}
+.text-el .text-item,
+.text-el .text-item-hidden {
+    display: none;
+}
+
+.text-el .text-item-visible {
+    display: block;
+    animation: fadeVisibility 0.5s;
+}
+.carousel {
+    max-width: 600px;
+    position: relative;
+}
+
+.carousel .carousel-item,
+.carousel .carousel-item-hidden {
+    display: none;
+}
+
+.carousel .carousel-item-visible {
+    display: block;
+    animation: fadeVisibility 0.5s;
+}
+
+.carousel .carousel-item img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+.carousel .carousel-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position:absolute;
+    top: 20%;
+    left: 0%;
+    transform: translateY(100%);
+}
+
+.carousel .carousel-actions button {
+    border-radius: 50px;
+    background-color: white;
+    border: 0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+#carousel-button-next:hover,
+#carousel-button-next:active,
+#carousel-button-prev:hover,
+#carousel-button-prev:active {
+    box-shadow: 0 0 0 4px gray;
+    transition: 0.7s;
+    cursor: pointer;
+}
+.carousel .carousel-actions button#carousel-button-prev {
+    margin-left: 20px;
+}
+
+.carousel .carousel-actions button#carousel-button-next {
+    margin-right: 20px;   
+}
+
+/* Slides-Indicator */
+
+.slide-indicators-container {
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+}
+.slide-indicators {
+    width: 4px;
+    height: 4px;
+    padding: 2px;
+    margin: 0 3px;
+    background-color: gray;
+    border-radius: 50%;
+    transform: translateY(-350%);
+    border: 1px solide black;
+}
+.active-slide {
+    transform: translateY(-295%);
+    width: 6px;
+    height: 6px;
+    background-color: whitesmoke;
+}
+
+/* Play/Pause button */
+
+#pause-button {
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+    transform: translateY(-250%);
+    border-radius: 50%;
+}
+#pause-button:hover,
+#pause-button:active,
+#play-button:hover,
+#play-button:active {
+    box-shadow: 0 0 0 3px gray;
+    transition: 0.7s;
+    cursor: pointer;
+}
+#play-button {
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+    transform: translateY(-250%);
+    border-radius: 50%;
+}
+@keyframes fadeVisibility {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
